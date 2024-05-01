@@ -368,38 +368,135 @@ export interface ApiProductProduct extends Schema.CollectionType {
     singularName: 'product';
     pluralName: 'products';
     displayName: 'Product';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    medusa_id: Attribute.UID;
-    title: Attribute.String & Attribute.Required;
-    subtitle: Attribute.String;
-    description: Attribute.Text;
-    handle: Attribute.Text;
+    medusa_id: Attribute.String & Attribute.Required;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    subtitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    handle: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     is_giftcard: Attribute.Boolean &
       Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
       Attribute.DefaultTo<false>;
     status: Attribute.Enumeration<
       ['draft', 'proposed', 'published', 'rejected']
     > &
       Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
       Attribute.DefaultTo<'published'>;
-    thumbnail: Attribute.String;
+    thumbnail: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     discountable: Attribute.Boolean &
       Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
       Attribute.DefaultTo<true>;
-    weight: Attribute.Decimal;
-    product_length: Attribute.Decimal;
-    width: Attribute.Decimal;
-    height: Attribute.Decimal;
-    hs_code: Attribute.String;
-    origin_country: Attribute.String;
-    mid_code: Attribute.String;
-    material: Attribute.String;
-    metadata: Attribute.JSON;
-    metafields: Attribute.JSON;
+    weight: Attribute.Decimal &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    product_length: Attribute.Decimal &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    width: Attribute.Decimal &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    height: Attribute.Decimal &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    hs_code: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    origin_country: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    mid_code: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    material: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metadata: Attribute.JSON &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metafields: Attribute.JSON &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -415,6 +512,12 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::product.product'
+    >;
+    locale: Attribute.String;
   };
 }
 

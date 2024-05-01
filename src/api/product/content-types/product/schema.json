@@ -1,0 +1,81 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "medusa_id": {
+      "type": "uid"
+    },
+    "title": {
+      "type": "text",
+      "required": true,
+      "unique": false
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "handle": {
+      "type": "text"
+    },
+    "is_giftcard": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["draft", "proposed", "published", "rejected"],
+      "default": "published",
+      "required": true
+    },
+    "thumbnail": {
+      "type": "string"
+    },
+    "discountable": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "weight": {
+      "type": "decimal"
+    },
+    "product_length": {
+      "type": "decimal"
+    },
+    "width": {
+      "type": "decimal"
+    },
+    "height": {
+      "type": "decimal"
+    },
+    "hs_code": {
+      "type": "string"
+    },
+    "origin_country": {
+      "type": "string"
+    },
+    "mid_code": {
+      "type": "string"
+    },
+    "material": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "json"
+    },
+    "metafields": {
+      "type": "json"
+    }
+  }
+}

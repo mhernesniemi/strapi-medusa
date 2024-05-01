@@ -374,8 +374,8 @@ export interface ApiProductProduct extends Schema.CollectionType {
   };
   attributes: {
     medusa_id: Attribute.UID;
-    title: Attribute.Text & Attribute.Required;
-    subtitle: Attribute.Text;
+    title: Attribute.String & Attribute.Required;
+    subtitle: Attribute.String;
     description: Attribute.Text;
     handle: Attribute.Text;
     is_giftcard: Attribute.Boolean &

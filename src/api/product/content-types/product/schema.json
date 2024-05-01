@@ -15,12 +15,12 @@
       "type": "uid"
     },
     "title": {
-      "type": "text",
+      "type": "string",
       "required": true,
       "unique": false
     },
     "subtitle": {
-      "type": "text"
+      "type": "string"
     },
     "description": {
       "type": "text"
